@@ -1,0 +1,23 @@
+{
+    "name": "rodbox/rodboxuser",
+    "version": "0.1",
+    "description": "user pour RB en version Alpha",
+    "license": "MIT",
+    "type": "symfony-bundle",
+    "keywords": ["rodbox","user","symfony"],
+    "homepage": "https://github.com/rodbox/userbundle",
+    "require": {
+        "symfony/symfony": "3.0.*",
+        "friendsofsymfony/user-bundle": "~2.0@dev",
+        "rodbox/rodbox":"dev-master"
+    },
+    "authors": [
+        {
+            "name": "Jacquemin Rodolphe",
+            "email": "jacquemin.rodolphe@hotmail.fr"
+        }
+    ],
+    "autoload": {
+        "psr-4": { "RB\\UserBundle\\": "" }
+    }
+}
