@@ -1,0 +1,112 @@
+{% extends 'RBUserBundle::index.html.twig' %}
+{% block breadcrumb %} <li>{{'title.register'|trans}}</li> {% endblock %}
+	{% block title %}Inscription{% endblock %}
+		{% block search %} {% endblock %}
+{% block body %}
+<section class="page">
+
+
+<h1 class="league marg-top-content-6">{{'msg.register.title'|trans}}</h1>
+<blockquote class=" no-border alert alert-info m-v-c">{{"msg.have_account" | trans}} <strong> <br>
+                    <a href="{{path('fos_user_security_login') }}" class="small-2">{{"action.click_here"|trans}}</a></strong></blockquote>
+</div>
+
+{{form_start(form,{attr:{class:'table'}})}}
+
+	{% for item in form %}
+	{{ form_row(item) }}
+	{% endfor %}
+
+<hr>
+<button type="submit" class="btn btn-primary">
+	{{"action.create" | trans}}
+</button>
+{{form_end(form)}}
+
+
+
+{# {% macro renderOptions(options) %}
+  {% set length = options|length %}
+  {% for key in 0..(length - 1) %}
+    {{ form_row(options[key], {'attr': {'data-target': options[key].vars['value'] } })}}
+  {% endfor %}
+{% endmacro %}
+{#
+
+
+ 	<legend>{{"msg.perso_info" | trans}}</legend>
+ 	<div class="form-group form-radio">
+ 	{{ form_label(form.UserType,'',{'label_attr':{'class':'label-table text-right'}}) }}
+ <span class="radio-list">{% for key, radio in form.UserType %}
+{{ form_widget(radio,{attr:{'class':'','data-target':radio.vars['value']}}) }}
+{{ form_label(radio,'',{label_attr:{'class':''}}) }}
+{% endfor %}</span>
+
+</div>
+<div id="buisness" class="form-group form-group-table hide radio-toggle">
+{{ form_row(form.UserBusinessName) }}
+</div>
+<div class="form-group form-group-table">
+	{{ form_row(form.UserFirstname) }}
+</div>
+<div class="form-group form-group-table">
+	{{ form_row(form.UserLastname) }}
+</div>
+<div class="form-group form-group-table  no-marg-bottom">
+{{ form_row(form.email,{attr:{ class:"form-control" }}) }}
+</div>
+</fieldset>
+ <fieldset class="pad-top-content-3">
+<legend>{{"label.adress" | trans}}</legend>
+<div class="form-group form-group-table">
+{{ form_row(form.UserAdress) }}
+</div>
+
+		<div class="form-group form-group-table">
+			{{ form_row(form.UserCP,{attr:{class:'w-20 form-control'}}) }}
+		</div>
+
+		<div class="form-group form-group-table">
+			{{ form_row(form.UserCity) }}
+		</div>
+
+
+<div class="form-group form-group-table">
+{{ form_row(form.UserCountry) }}
+</div>
+<hr class="margv-content-3">
+		<div class="form-group form-group-table ">
+		{{ form_row(form.UserTel,{attr:{class:'w-50 form-control'}}) }}
+		</div>
+
+		<div class="form-group form-group-table  no-marg-bottom">
+		{{ form_row(form.UserSkype,{attr:{class:'w-50 form-control'}}) }}
+		</div>
+
+
+
+
+</fieldset>
+ <fieldset class="pad-top-content-3">
+<legend>{{"label.pw" | trans}}</legend><div class="form-group form-group-table hidden">
+{{ form_widget(form.username,{attr:{required:false}}) }}
+</div>
+
+
+<div class="form-group form-group-table no-marg-bottom">
+{{ form_row(form.plainPassword.first,{attr:{class:'form-control marg-bottom-content-1'}}) }}
+{{ form_row(form.plainPassword.second,{attr:{class:'form-control'}}) }}
+</div>
+</fieldset>
+<div class="text-right">
+<button type="submit" class="btn btn-green btn-xl marg-bottom-content-6">
+	{{"action.create" | trans}}
+	{{"msg.my_account" | trans}}
+</button>
+</div>
+{{form_end(form)}}
+</div>#}
+</section>
+
+<!-- END RB PORTLET : Inscription -->
+{% endblock body %}

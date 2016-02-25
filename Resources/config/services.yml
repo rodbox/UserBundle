@@ -1,4 +1,22 @@
 services:
-#    rb_user.example:
-#        class: RB\UserBundle\Example
-#        arguments: ["@service_id", "plain_value", %parameter%]
+    rb_user.registration.form.type:
+        class: RB\UserBundle\Form\RegistrationFormType
+        tags:
+            - { name: form.type, alias: rb_user_registration }
+
+    # rb_user.profile.form.type:
+    #     class: RB\UserBundle\Form\ProfileFormType
+    #     tags:
+    #         - { name: form.type, alias: rb_user_profile }
+
+    # rb_user.twig.user_extension:
+    #     class: RB\UserBundle\Twig\UserExtension
+    #     arguments: [@service_container,@translator]
+    #     tags:
+    #         - { name: twig.extension }
+
+    # rb_user.registration_complet:
+    #     class: RB\UserBundle\EventListener\RegistrationConfirmedListener
+    #     arguments: [@router,@service_container]
+    #     tags:
+    #         - { name: kernel.event_subscriber }

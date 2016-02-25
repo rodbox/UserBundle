@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Translation\Translator;
+
 class RegistrationFormType extends AbstractType
 {
     /**
@@ -15,113 +16,99 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $trans = new translator("fr");
-        $builder
-            ->add('UserType', 'choice', array(
 
-                'choices'   => array(
-                    'perso'=>$trans->trans('msg.perso'),
-                    'buisness'=>$trans->trans('msg.buisness')
-                ),
-                
-                'label'=>'label.UserType',
-                'attr' => array(
+        $builder
+            ->add('UserType', 'choice', [
+                'choices'   => [
+                    'perso'    => $trans->trans('msg.perso'),
+                    'buisness' => $trans->trans('msg.buisness')
+                ],
+                'label'=> 'label.UserType',
+                'attr' => [
                     // 'placeholder'   => 'label.UserType',
                     'class'             =>' '
-                ),
+                ],
                 'expanded'  => true,
                 'multiple'  => false
-                ))
-            ->add('username','text',array(
-
-                'data'=>'Jacquemin',
-                'label'=>$trans->trans('label.username'),
-                'attr' => array(
+                ])
+            ->add('username','text',[
+                'label' =>$trans->trans('label.username'),
+                'attr'  => [
                     // 'placeholder'   => $trans->trans('label.username'),
                     'class'         => 'form-control'
-                    )
-                ))
-            ->add('UserLastname','text',array(
-
-                'data'=>'Jacquemin',
-                'label'=>'label.UserLastname',
-                'attr' => array(
+                    ]
+                ])
+            ->add('UserLastname','text',[
+                'label' =>'label.UserLastname',
+                'attr'  => [
                     // 'placeholder'   => 'label.UserLastname',
                     'class'         => 'form-control'
-                    )
-                ))
-            ->add('UserFirstname','text',array(
-                'data'=>'Rodolphe',
-                'label'=>'label.UserFirstname',
-                'attr' => array(
+                    ]
+                ])
+            ->add('UserFirstname','text',[
+                'label' =>'label.UserFirstname',
+                'attr'  => [
                     // 'placeholder'   => 'label.UserFirstname',
                     'class'         => 'form-control'
-                    )
-                ))
-           
-            ->add('UserAdress','text',array(
-                'data'=>'Place de la République',
-                'label'=>'label.UserAdress',
-                'attr' => array(
+                    ]
+                ])
+
+            ->add('UserAdress','text',[
+                'label' =>'label.UserAdress',
+                'attr'  => [
                     // 'placeholder'   => 'label.UserAdress',
                     'class'         => 'form-control'
-                    )
-                ))
-            ->add('UserSkype','text',array(
-                'data'=>'rodolphe.rodbox',
-                'label'=>'label.UserSkype',
-                'required'=>false,
-                'attr' => array(
+                    ]
+                ])
+            ->add('UserSkype','text',[
+                'label'    =>'label.UserSkype',
+                'required' =>false,
+                'attr'     => [
                     // 'placeholder'   => 'label.UserSkype',
                     'class'         => 'form-control'
-                    )
-                ))
-            ->add('UserCP','text',array(
-                'data'=>'75010',
-                'label'=>'label.UserCP',
-                'attr' => array(
+                    ]
+                ])
+            ->add('UserCP','text',[
+                'label' =>'label.UserCP',
+                'attr'  => [
                     // 'placeholder'   => 'label.UserCP',
                     'class'         => 'form-control'
-                    )
-                ))
-            ->add('UserBusinessName','text',array(
-                'data'=>'75010',
-                'label'=>'label.UserBusinessName',
-                'required'=>false,
-                'attr' => array(
+                    ]
+                ])
+            ->add('UserBusinessName','text',[
+                'label'    =>'label.UserBusinessName',
+                'required' =>false,
+                'attr'     => [
                     // 'placeholder'   => 'label.UserBusinessName',
                     'class'         => 'form-control'
-                    )
-                ))
-            ->add('UserCity','text',array(
-                'data'=>'Paris',
+                    ]
+                ])
+            ->add('UserCity','text',[
                 'label'=>'label.UserCity',
-                'attr' => array(
+                'attr' => [
                     // 'placeholder'   => 'label.UserCity',
                     'class'         => 'form-control'
-                    )
-                ))
-            ->add('UserCountry','country',array(
-                'data'=>'FR',
-                'label'=>'label.UserCountry',
-
-                "attr" => array(
-                    // 'placeholder'=>'label.UserCountry',
+                    ]
+                ])
+            ->add('UserCountry','country',[
+                'label' =>'label.UserCountry',
+                "attr"  => [
                     "class" => "form-control select-2"
-                )
-            ))
-           
-            ->add('UserTel','text',array(
-                'label'=>'label.UserTel',
-                'required'=>false,
-                'attr' => array(
+                ]
+            ])
+
+            ->add('UserTel','text',[
+                'label'    =>'label.UserTel',
+                'required' =>false,
+                'attr'     => [
                     // 'placeholder'   => 'label.UserTel',
                     'class'         => 'form-control'
-                    )
-            ))
-            
+                    ]
+            ])
+
         ;
     }
-    
+
 public function getParent()
     {
         return 'fos_user_registration';

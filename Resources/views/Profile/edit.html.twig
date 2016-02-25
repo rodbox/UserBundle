@@ -1,0 +1,105 @@
+
+{% extends app.request.isxmlhttprequest ? '::base.html.twig' : 'RBFrontBundle::index.html.twig' %}
+
+
+{% block title %}Mon profile : <span class="small opacity">{{app.user.username}}</span>{% endblock title %}
+{% block subTitle %}{{app.user.username}}{% endblock subTitle %}
+{% block breadcrumb %}<li>Mon profile</li>{% endblock breadcrumb %}
+{% block body %}
+  {{form_start(form)}}
+<div class="container">
+    <!-- BEGIN ROW  -->
+    <div class="row ">
+        <div class="col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3 ">
+
+    <blockquote class="question">{{"msg.my_profile" | trans}}</blockquote>
+
+ <fieldset class="pad-top-content-6">
+<legend>{{"msg.mail_pw" | trans}}</legend><div class="form-group">
+{{ form_row(form.username) }}
+</div><div class="form-group">
+{{ form_row(form.current_password) }}
+</div>
+<div class="form-group">
+{{ form_row(form.email,{attr:{ placeholder:"email",class:"form-control" }}) }}
+</div>
+
+<div class="form-group">
+{# {{ form_row(form.plainPassword.first,{attr:{placeholder:"Mot de passe",class:'form-control marg-bottom-content-1'}}) }}
+{{ form_row(form.plainPassword.second,{attr:{placeholder:"Confirmation",class:'form-control'}}) }} #}
+</div>
+</fieldset>
+ <fieldset class="pad-top-content-6">
+    <legend>{{"msg.perso_info" | trans}}</legend>
+    <div class="form-group form-radio">
+{{ form_row(form.UserType) }}
+</div><div class="form-group">
+{{ form_row(form.UserBusinessName) }}
+</div>
+
+<!-- BEGIN ROW  -->
+<div class="row ">
+    <!-- BEGIN COL : col-md-6 col-lg-6  -->
+    <div class="col-md-6 col-lg-6 ">
+        <div class="form-group">
+            {{ form_row(form.UserFirstname) }}
+        </div>
+    </div>
+    <!-- END COL : col-md-6 col-lg-6  --><!-- BEGIN COL : col-md-6 col-lg-6  -->
+    <div class="col-md-6 col-lg-6 ">
+        <div class="form-group">
+            {{ form_row(form.UserLastname) }}
+        </div>
+    </div>
+    <!-- END COL : col-md-6 col-lg-6  -->
+</div>
+<!-- END ROW  -->
+
+<div class="form-group">
+{{ form_row(form.UserAdress) }}
+</div>
+
+<!-- BEGIN ROW  -->
+<div class="row ">
+    <!-- BEGIN COL : col-md-3 col-lg-3  -->
+    <div class="col-md-3 col-lg-3 ">
+        <div class="form-group">
+            {{ form_row(form.UserCP) }}
+        </div>
+    </div>
+    <!-- END COL : col-md-9 col-lg-9  --><!-- BEGIN COL : col-md-9 col-lg-9  -->
+    <div class="col-md-9 col-lg-9 no-pad-left">
+        <div class="form-group">
+            {{ form_row(form.UserCity) }}
+        </div>
+    </div>
+    <!-- END COL : col-md-6 col-lg-6  -->
+</div>
+<!-- END ROW  -->
+
+<div class="form-group">
+{{ form_row(form.UserCountry) }}
+</div>
+
+
+<div class="form-group">
+{{ form_row(form.UserTel) }}
+</div>
+
+<div class="form-group">
+{{ form_row(form.UserSkype) }}
+</div>
+
+</fieldset>
+<input type="submit" value="{{"action.update" | trans}}" class="btn btn-primary btn-xl">
+
+{{form_end(form)}}
+</div>
+</section>
+
+<!-- END RB PORTLET : Inscription --></div>
+    </div>
+    <!-- END ROW  -->
+                
+</div>
+{% endblock body %}
