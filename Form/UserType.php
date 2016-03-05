@@ -30,7 +30,7 @@ class UserType extends AbstractType
             ->add('UserSkype')
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */

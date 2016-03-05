@@ -53,7 +53,7 @@ class ProfileFormType extends AbstractType
                     'class'         => 'form-control'
                     )
                 ))
-           
+
             ->add('UserAdress','text',array(
                 // 'data'=>'Place de la République',
                 'label'=>'label.UserAdress',
@@ -105,7 +105,7 @@ class ProfileFormType extends AbstractType
                     "class" => "form-control select-2"
                 )
             ))
-           
+
             ->add('UserTel','text',array(
                 'label'=>'label.UserTel',
                 'required'=>false,
@@ -114,10 +114,10 @@ class ProfileFormType extends AbstractType
                     'class'         => 'form-control'
                     )
             ))
-            
+
         ;
     }
-    
+
 public function getParent()
     {
         return 'fos_user_profile';

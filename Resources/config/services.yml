@@ -4,6 +4,11 @@ services:
         tags:
             - { name: form.type, alias: rb_user_registration }
 
+    rb_user_extension:
+        class: RB\UserBundle\Twig\RBUserExtension
+        arguments: ["@service_container","@twig", "@session"]
+        tags:
+            - { name: twig.extension }
     # rb_user.profile.form.type:
     #     class: RB\UserBundle\Form\ProfileFormType
     #     tags:
