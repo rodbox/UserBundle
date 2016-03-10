@@ -9,7 +9,7 @@
     "require": {
         "symfony/symfony": "3.0.*",
         "friendsofsymfony/user-bundle": "~2.0@dev",
-        "rodbox/rodbox":"dev-master"
+        "rodbox/rodboxcore":"dev-master"
     },
     "authors": [
         {

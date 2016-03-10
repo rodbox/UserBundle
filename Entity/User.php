@@ -48,10 +48,10 @@ class User extends BaseUser
 
     /** @ORM\Column(type="boolean", nullable=true) **/
     protected $UserActive;
-    
+
     // * @ORM\Column(type="string", nullable=true) *
     protected $UserType;
-    
+
     /** @ORM\Column(type="string", nullable=true) **/
     protected $UserBusinessName;
 
@@ -89,7 +89,7 @@ class User extends BaseUser
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -112,7 +112,7 @@ class User extends BaseUser
     /**
      * Get UserCiv
      *
-     * @return string 
+     * @return string
      */
     public function getUserCiv()
     {
@@ -135,7 +135,7 @@ class User extends BaseUser
     /**
      * Get UserLastname
      *
-     * @return string 
+     * @return string
      */
     public function getUserLastname()
     {
@@ -158,7 +158,7 @@ class User extends BaseUser
     /**
      * Get UserFirstname
      *
-     * @return string 
+     * @return string
      */
     public function getUserFirstname()
     {
@@ -181,7 +181,7 @@ class User extends BaseUser
     /**
      * Get UserAdress
      *
-     * @return string 
+     * @return string
      */
     public function getUserAdress()
     {
@@ -204,7 +204,7 @@ class User extends BaseUser
     /**
      * Get UserCP
      *
-     * @return string 
+     * @return string
      */
     public function getUserCP()
     {
@@ -227,7 +227,7 @@ class User extends BaseUser
     /**
      * Get UserCity
      *
-     * @return string 
+     * @return string
      */
     public function getUserCity()
     {
@@ -250,7 +250,7 @@ class User extends BaseUser
     /**
      * Get UserCountry
      *
-     * @return string 
+     * @return string
      */
     public function getUserCountry()
     {
@@ -273,7 +273,7 @@ class User extends BaseUser
     /**
      * Get UserType
      *
-     * @return string 
+     * @return string
      */
     public function getUserType()
     {
@@ -296,7 +296,7 @@ class User extends BaseUser
     /**
      * Get UserDateCrea
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUserDateCrea()
     {
@@ -319,7 +319,7 @@ class User extends BaseUser
     /**
      * Get UserDateLastConnect
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUserDateLastConnect()
     {
@@ -342,7 +342,7 @@ class User extends BaseUser
     /**
      * Get UserDateUpd
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUserDateUpd()
     {
@@ -365,7 +365,7 @@ class User extends BaseUser
     /**
      * Get UserLang
      *
-     * @return array 
+     * @return array
      */
     public function getUserLang()
     {
@@ -388,7 +388,7 @@ class User extends BaseUser
     /**
      * Get UserTel
      *
-     * @return string 
+     * @return string
      */
     public function getUserTel()
     {
@@ -411,7 +411,7 @@ class User extends BaseUser
     /**
      * Get UserActive
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getUserActive()
     {
@@ -434,7 +434,7 @@ class User extends BaseUser
     /**
      * Get UserBusinessName
      *
-     * @return string 
+     * @return string
      */
     public function getUserBusinessName()
     {
@@ -457,7 +457,7 @@ class User extends BaseUser
     /**
      * Get UserSkype
      *
-     * @return string 
+     * @return string
      */
     public function getUserSkype()
     {
