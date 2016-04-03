@@ -1,15 +1,19 @@
 {
-    "name": "rodbox/rodboxuser",
+    "name": "rodbox\/rodboxuser",
     "version": "0.1",
     "description": "user pour RB en version Alpha",
     "license": "MIT",
     "type": "symfony-bundle",
-    "keywords": ["rodbox","user","symfony"],
-    "homepage": "https://github.com/rodbox/userbundle",
+    "keywords": [
+        "rodbox",
+        "user",
+        "symfony"
+    ],
+    "homepage": "https:\/\/github.com\/rodbox\/userbundle",
     "require": {
-        "symfony/symfony": "3.0.*",
-        "friendsofsymfony/user-bundle": "~2.0@dev",
-        "rodbox/rodboxcore":"dev-master"
+        "symfony\/symfony": "3.0.*",
+        "friendsofsymfony\/user-bundle": "~2.0@dev",
+        "rodbox\/rodboxcore": "dev-master"
     },
     "authors": [
         {
@@ -18,6 +22,9 @@
         }
     ],
     "autoload": {
-        "psr-4": { "RB\\UserBundle\\": "" }
-    }
+        "psr-4": {
+            "RB\\UserBundle\\": ""
+        }
+    },
+    "minimum-stability": "dev"
 }
