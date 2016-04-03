@@ -11,7 +11,7 @@
     ],
     "homepage": "https:\/\/github.com\/rodbox\/userbundle",
     "require": {
-        "symfony\/symfony": "3.0.*",
+        "symfony\/symfony": "3.*",
         "friendsofsymfony\/user-bundle": "~2.0@dev",
         "rodbox\/rodboxcore": "dev-master"
     },
