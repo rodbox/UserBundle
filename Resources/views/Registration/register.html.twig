@@ -1,5 +1,9 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
+{% extends app.request.isxmlhttprequest ? '::base.html.twig' : 'RBUserBundle::index.html.twig' %}
 
-{% block fos_user_content %}
-{% include "FOSUserBundle:Registration:register_content.html.twig" %}
-{% endblock fos_user_content %}
+{% block body %}
+<section class="page">
+    <blockquote class=" no-border alert alert-info m-v-c">{{"msg.have_account" | trans}} <strong><br>
+    <a href="{{path('fos_user_security_login') }}" class="small-2 btn-modal" title="{{'route.fos_user_security_login.title'|trans}}">{{"action.click_here"|trans}}</a></strong></blockquote>
+    {% include "RBUserBundle:Registration:register_content.html.twig" %}
+</section>
+{% endblock body %}

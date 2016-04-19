@@ -2,27 +2,9 @@
 {% set route %}route.{{app.request.get('_route')}}.title{% endset %}
 <html lang="{{app.request.locale}}" {{ context_me_attr() }}>
 <head>
+  
+<link rel="stylesheet" href="{{ rb_bower_asset('bootstrap/dist/css/bootstrap.min.css') }}">
 
-<link rel="stylesheet" href="{{web_cdn}}/js/jquery-ui/jquery-ui.min.css">
-<link rel="stylesheet" href="{{web_cdn}}/js/bootstrap-4/dist/css/bootstrap.min.css" >
-<link rel="stylesheet" href="{{web_cdn}}/js/fa/css/font-awesome.min.css">
-
-<link rel="stylesheet" href="{{web_cdn}}/js/select2/dist/css/select2.min.css" />
-
-<link rel="stylesheet" href="{{web_cdn}}/js/cropper/dist/cropper.min.css">
-<link rel="stylesheet" href="{{web_cdn}}/js/toggle/css/bootstrap-toggle.min.css">
-<!-- Code mirror css -->
-<link rel="stylesheet" href="{{web_cdn}}/js/codemirror/lib/codemirror.css">
-<link rel="stylesheet" href="{{web_cdn}}/js/codemirror/theme/twilight.css">
-<!-- end Code mirror css -->
-<!-- include summernote css/js-->
-<link rel="stylesheet" href="{{web_cdn}}/js/summernote/summernote.css" >
-<link rel="stylesheet" href="{{web_cdn}}/js/enhance/css/zoom.css" >
-
-{# <link rel="stylesheet" href="{{asset('css/app.css')}}"> #}
-{# <link rel="stylesheet" href="{{web_cdn}}/css/shop.css"> #}
-<link rel="stylesheet" href="{{ asset('bundles/rbfront/css/app.css') }}">
-<link rel="icon" href="{{web_cdn}}/media/favicon.png" type="image/png" sizes="16x16" >
 
 <meta charset="UTF-8">
     <title>{{title_web}}</title>
@@ -62,128 +44,8 @@
     <div class="flash-container">
     </div>
 </div>
-
-{# end : Context-n-default #}
-    {% include "RBCoreBundle:Twig:context-me-n-container.html.twig" %}
-    {% include "RBFrontBundle:Navigation:modal.html.twig" %}
-    {% include "RBFrontBundle:Navigation:load-lock.html.twig" %}
-
-   <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
-   <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
-    <script src="{{web_cdn}}/js/jquery/jquery-2.2.0.min.js"></script>
-
-    <script src="{{web_cdn}}/js/tether/js/tether.min.js" ></script>
-    <script src="{{web_cdn}}/js/bootstrap-4/dist/js/bootstrap.min.js" ></script>
-
-    <script src="{{web_cdn}}/js/app-setflash.js"></script>
-
-    <script src="{{web_cdn}}/js/velocity/js/velocity.min.js" ></script>
-
-    <script src="{{web_cdn}}/js/jquery-ui/jquery-ui.min.js"></script>
-    <script src="{{web_cdn}}/js/select2/dist/js/select2.full.min.js"></script>
-    <script src="{{web_cdn}}/js/polyfill-master/dist/polyfill.min.js"></script>
-    <script src="{{web_cdn}}/js/cropper/dist/cropper.min.js"></script>
-
-    <script src="{{web_cdn}}/init/cropper-init.js"></script>
-    <script src="{{web_cdn}}/js/polyfill-master/demos/position-sticky/polyfill.position-sticky.js"></script>
-    <script src="{{web_cdn}}/js/bootbox/bootbox.js"></script>
-    <script src="{{web_cdn}}/js/clipboard/dist/clipboard.min.js"></script>
-    <script src="{{web_cdn}}/js/toggle/js/bootstrap-toggle.min.js"></script>
-
-    <script src="{{web_cdn}}/js/appaltkey/jquery-appaltkey.js"></script>
-    <script src="{{web_cdn}}/js/app-batch.js"></script>
-    <script src="{{web_cdn}}/js/app-context.js"></script>
-    <script src="{{web_cdn}}/js/app-core.js"></script>
-
-    <script src="{{web_cdn}}/js/jquery-appserializeobject.js" ></script>
-
-    <script src="{{asset('js/callback.js')}}" ></script>
-
-    <script src="{{web_cdn}}/js/enhance/js/enhance.js" ></script>
-    <script src="{{web_cdn}}/js/plupload/js/plupload.full.min.js"></script>
-    <script src="{{web_cdn}}/js/plupload/init-plupload.js"></script>
-  {#   Code mirror JS #}
-    <script src="{{web_cdn}}/js/codemirror/lib/codemirror.js"></script>
-
-  {#   Addon codemirror #}
-    <script src="{{web_cdn}}/js/codemirror/addon/search/searchcursor.js"></script>
-    <script src="{{web_cdn}}/js/codemirror/addon/search/search.js"></script>
-    <script src="{{web_cdn}}/js/codemirror/addon/dialog/dialog.js"></script>
-    <script src="{{web_cdn}}/js/codemirror/addon/edit/matchbrackets.js"></script>
-    <script src="{{web_cdn}}/js/codemirror/addon/edit/closebrackets.js"></script>
-    <script src="{{web_cdn}}/js/codemirror/addon/comment/comment.js"></script>
-    <script src="{{web_cdn}}/js/codemirror/addon/wrap/hardwrap.js"></script>
-    <script src="{{web_cdn}}/js/codemirror/addon/fold/foldcode.js"></script>
-    <script src="{{web_cdn}}/js/codemirror/addon/fold/brace-fold.js"></script>
-  {#   Code mirror mode #}
-    <script src="{{web_cdn}}/js/codemirror/mode/htmlmixed/htmlmixed.js"></script>
-    <script src="{{web_cdn}}/js/codemirror/mode/xml/xml.js"></script>
-    <script src="{{web_cdn}}/js/codemirror/mode/clike/clike.js"></script>
-    <script src="{{web_cdn}}/js/codemirror/mode/php/php.js"></script>
-    <script src="{{web_cdn}}/js/codemirror/mode/css/css.js"></script>
-    <script src="{{web_cdn}}/js/codemirror/mode/markdown/markdown.js"></script>
-    <script src="{{web_cdn}}/js/codemirror/mode/javascript/javascript.js"></script>
-  {#   Code mirror keymap #}
-    <script src="{{web_cdn}}/js/codemirror/keymap/sublime.js"></script>
-  {#   end Code mirror #}
-    <script src="{{web_cdn}}/js/summernote/summernote.min.js"></script>
-    <script src="{{web_cdn}}/js/app-blog.js" ></script>
-
-    <script src="{{asset('js/app.js')}}" ></script>
-
-<script>
-/*$(document).ready(function($) {
-
-
-    var cmConfig = {
-        theme         : "twilight",
-        keyMap        : "sublime",
-        lineNumbers   : true,
-        lineWrapping  : true,
-        matchBrackets : true,
-        tabSize       : 8,
-    };
-
-    $('.summernote').summernote({
-        codemirror    : cmConfig,
-        prettifyHtml  : true,
-        airMode       : false,
-        resize        : false,
-        height        : 500,
-        tabsize       : 4,
-        toolbar       :[
-            ['style',['bold', 'italic', 'underline', 'clear']],
-            ['para', ['ul', 'ol', 'paragraph']],
-            ['view', ['link','codeview']]
-        ],
-        callbacks: {
-          onInit: function() {
-            $.blog.init();
-          }
-        }
-    }).summernote('focus');
-});
-
-$.each($("pre"), function(index, val) {
-
-     var rand = Math.random().toString(36).substring(2);
-     var t    = $(val);
-     var id   = 'cm-'+rand;
-     var cm   = $("<textarea>",{id:id}).val(t.text());
-
-    t.replaceWith(cm);
-
-    var editor = CodeMirror.fromTextArea(document.getElementById(id),{
-        theme         : "twilight",
-        keyMap        : "sublime",
-        lineNumbers   : true,
-        lineWrapping  : true,
-        matchBrackets : true,
-        tabSize       : 8,
-    });
-
-});
-*/
+ <script src="{{ rb_bower_asset('jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ rb_bower_asset('bootstrap/dist/js/bootstrap.min.js') }}"></script>
 </script>
 </body>
 </html>

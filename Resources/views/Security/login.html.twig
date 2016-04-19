@@ -1,5 +1,4 @@
 {% extends app.request.isxmlhttprequest ? '::base.html.twig' : 'RBUserBundle::index.html.twig' %}
-
 {% block title %}{% endblock %}
 {% block search %} {% endblock %}
 {% block body %}
@@ -7,59 +6,54 @@
         <!-- BEGIN ROW  -->
         <div class="row ">
             {#  <div class="col-xs-4 row marg-right-content-1 no-pad-right">
-                 <div class="box  bg-4 c-5 no-border pad-content-4 text-center">
+                <div class="box  bg-4 c-5 no-border pad-content-4 text-center">
                     <i class="glyphicon glyphicon-user fa-xl marg-bottom-content-4"></i>
-                     <p class="small-2 lh-m">Créer un compte pour commander et suivre votre réparation, profiter d'avantages et de promos sur les produits et services MinutePhone.</p>
-                 </div><div class="box  bg-1 c-5 small-2 no-border pad-content-5 "><ul class="no-marg no-style no-pad">
-                    <li class="lh-xl">Suivez vos réparations</li>
-                    <li class="lh-xl">Commandez vos accessoires</li>
-                    <li class="lh-xl">Commandez vos accessoires</li>
-                </ul>
-                 </div>
-             </div> #}
+                    <p class="small-2 lh-m">Créer un compte pour commander et suivre votre réparation, profiter d'avantages et de promos sur les produits et services MinutePhone.</p>
+                </div><div class="box  bg-1 c-5 small-2 no-border pad-content-5 "><ul class="no-marg no-style no-pad">
+                <li class="lh-xl">Suivez vos réparations</li>
+                <li class="lh-xl">Commandez vos accessoires</li>
+                <li class="lh-xl">Commandez vos accessoires</li>
+            </ul>
+        </div>
+    </div> #}
+    <div class="col-xs-12 pad-bottom-content-3">
+        {#   <h1 class="league ">{{'msg.login.title'|trans}}</h1> #}
+        <blockquote class=" no-border alert alert-info m-v-c">{{"msg.havent_account" | trans}} <strong><br>
+            <a href="{{path('fos_user_registration_register') }}" class="small-2 btn-modal" title="{{"route.fos_user_registration_register.title"|trans}}">{{"action.click_here"|trans}}</a></strong></blockquote>
+            <form action="{{ path("fos_user_security_check") }}" id="user_login" method="post" class="form-line">
+                <fieldset class="form-group">
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                    {# <fieldset class="padv-content-6 bg-transparent"> #}
+                        <div class="form-group input-group input-group-focus">
+                            <span class="input-group-addon no-border" ><i class="fa fa-user"></i> </span>
+                            <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+                            {# <label class="control-label visible-ie8 visible-ie9">{{"label.username"|trans}}</label> #}
+                            <input type="text" name="_username" autofocus=true placeholder="{{"label.username"|trans}}" autocomplete="off" class="form-control placeholder-no-fix" value="{{ last_username }}" required="required">
+                        </div>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon  no-border" ><i class="fa fa-lock"></i> </span>
+                            <input type="password" id="password" name="_password" required="required" placeholder="{{"label.password"|trans}}" autocomplete="off" class="form-control placeholder-no-fix"/>
+                        </div>
+                        <div class="checkbox">
+  <label>
+    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+    {{'msg.remember' | trans }}
+  </label>
+</div>
 
-             <div class="col-xs-12 pad-bottom-content-3">
-                 <h1 class="league ">{{'msg.login.title'|trans}}</h1>
-    <blockquote class=" no-border alert alert-info m-v-c">{{"msg.havent_account" | trans}} <strong><br>
-                    <a href="{{path('fos_user_registration_register') }}" class="small-2">{{"action.click_here"|trans}}</a></strong></blockquote>
-
-
-                <form action="{{ path("fos_user_security_check") }}" id="user_login" method="post" class="form-line">
-<fieldset class="form-group">
-                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-                {# <fieldset class="padv-content-6 bg-transparent"> #}
-                    <div class="form-group input-group input-group-focus">
-                    <span class="input-group-addon no-border" ><i class="fa fa-user"></i> </span>
-                    <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-                    {# <label class="control-label visible-ie8 visible-ie9">{{"label.username"|trans}}</label> #}
-                    <input type="text" name="_username" autofocus=true placeholder="{{"label.username"|trans}}" autocomplete="off" class="form-control placeholder-no-fix" value="{{ last_username }}" required="required">
-                </div>
-
-                <div class="form-group input-group">
-                    <span class="input-group-addon  no-border" ><i class="fa fa-lock"></i> </span>
-                    <input type="password" id="password" name="_password" required="required" placeholder="{{"label.password"|trans}}" autocomplete="off" class="form-control placeholder-no-fix"/>
-                </div>
-                 <p><input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-                    <label for="remember_me" class="checkbox inline c-2 small-2">{{'msg.remember' | trans }}</label></p>
-</fieldset>
-<fieldset class="form-group">
-                {# </fieldset> #}
-
-
-                {% if error %}
-                    <div class="alert alert-danger alert-dismissible fade in">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-                {% endif %}
-
-
-
-                <input type="submit" class="btn btn-primary " id="_submit" name="_submit" value="{{'action.connect'| trans }}" />
-<a href="{{path('fos_user_change_password') }}" class="btn btn-default c-2 m-l-c-3">{{"msg.forget_pw" | trans}}</a></fieldset>
-            </form>
+                    </fieldset>
+                    <fieldset class="form-group">
+                    {# </fieldset> #}
+                    {% if error %}
+                        <div class="alert alert-danger alert-dismissible fade in">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+                    <input type="submit" class="btn btn-primary " id="_submit" name="_submit" value="{{'action.connect'| trans }}" />
+                    <a href="{{path('fos_user_change_password') }}" class="btn btn-default btn-modal">{{"msg.forget_pw" | trans}}</a></fieldset>
+                </form>
             </div>
             <!-- END COL : col-md-6 col-lg-6  -->
-</div>
+        </div>
         <!-- END ROW  -->
-
-       <div class="clearfix"></div>
-</section>
+        <div class="clearfix"></div>
+    </section>
 {% endblock body %}
