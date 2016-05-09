@@ -34,13 +34,12 @@
                             <span class="input-group-addon  no-border" ><i class="fa fa-lock"></i> </span>
                             <input type="password" id="password" name="_password" required="required" placeholder="{{"label.password"|trans}}" autocomplete="off" class="form-control placeholder-no-fix"/>
                         </div>
-                        <div class="checkbox">
-  <label>
-    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-    {{'msg.remember' | trans }}
-  </label>
-</div>
-
+                  
+                  <label class="c-input c-checkbox block">
+                            <input type="checkbox" value="1" name="remember_me" id="remember_me">
+                             <span class="c-indicator"></span>
+                             {{'msg.remember' | trans }}
+                        </label>
                     </fieldset>
                     <fieldset class="form-group">
                     {# </fieldset> #}

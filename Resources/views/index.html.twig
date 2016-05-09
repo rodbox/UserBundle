@@ -2,7 +2,7 @@
 {% set route %}route.{{app.request.get('_route')}}.title{% endset %}
 <html lang="{{app.request.locale}}" {{ context_me_attr() }}>
 <head>
-  
+
 <link rel="stylesheet" href="{{ rb_bower_asset('bootstrap/dist/css/bootstrap.min.css') }}">
 
 
@@ -26,6 +26,7 @@
             <div class="row">
             <div class="col-xs-4 col-xs-offset-4 top-1">
                 <div id="blog-content">
+                    {{ logo('M') }}
                 {% block body %}{% endblock %}
                 </div>
             </div>
