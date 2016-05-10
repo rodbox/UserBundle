@@ -5,47 +5,53 @@
 
 <link rel="stylesheet" href="{{ rb_bower_asset('bootstrap/dist/css/bootstrap.min.css') }}">
 
+<style type="text/css">
+    .logo{
 
+    }
+    label{
+        margin-top: 1rem;
+        margin-bottom: 0rem;
+    }
+    label + input[type="radio"],
+    label + input[type="checkbox"]{
+        margin-left: 1rem;
+    }
+    .btn.save{
+        margin: 1rem 0rem;
+    }
+</style>
 <meta charset="UTF-8">
     <title>{{title_web}}</title>
 </head>
 <body class="{% block bodyClass %}{% endblock %}">
     <div id="context-n-default" class="context-n">
         <div class="{% block containerClass %}{% endblock %}">
-            {# {% include "RBFrontBundle:Navigation:header.html.twig"  %} #}
-           {#  <div class="container ">
-                 <div class="row">
-                    <div class="col-xs-12">
-                       <h1 class="page-title"> {% block title %}{{route|trans}}{% endblock %}</h1>
-                       <h2 class="page-subtitle"> {% block subtitle %}{% endblock %}</h2>
-                    </div>
-                </div>
-            </div> #}
-
         <div class="container ">
             <div class="row">
-            <div class="col-xs-4 col-xs-offset-4 top-1">
-                <div id="blog-content">
-                    {{ logo('L') }}
-                {% block body %}{% endblock %}
+                <div class="col-xs-4 col-xs-offset-4 top-1">
+                    <div id="blog-content">
+                       <div class="text-center" style="padding:3rem 0rem;">
+                            {{ logo('L') }}
+                       </div>
+                    {% block body %}{% endblock %}
+                    </div>
                 </div>
-            </div>
-            <div class="col-xs-1">
-                <div id="sideRight">
-                {#tags()#}
-                {% block sideRight %}
-                {% endblock %}
+                <div class="col-xs-1">
+                    <div id="sideRight">
+                    {% block sideRight %}
+                    {% endblock %}
+                    </div>
                 </div>
             </div>
         </div>
-                </div>
     </div>
 
    {# {% include "RBFrontBundle:Navigation:footer.html.twig"  %} #}
     <div class="flash-container">
     </div>
 </div>
- <script src="{{ rb_bower_asset('jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ rb_bower_asset('jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ rb_bower_asset('bootstrap/dist/js/bootstrap.min.js') }}"></script>
 </script>
 </body>

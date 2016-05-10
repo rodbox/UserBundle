@@ -7,6 +7,18 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Translation\Translator;
 
+use Symfony\Component\Form\Extension\Core\Type\ButtonType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DatetimeType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\CountryType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
 class RegistrationFormType extends AbstractType
 {
     /**
@@ -18,7 +30,7 @@ class RegistrationFormType extends AbstractType
         $trans = new translator("fr");
 
         $builder
-            ->add('UserType', 'choice', [
+            ->add('UserType', ChoiceType::class, [
                 'choices'   => [
                     'perso'    => $trans->trans('msg.perso'),
                     'buisness' => $trans->trans('msg.buisness')
@@ -31,51 +43,7 @@ class RegistrationFormType extends AbstractType
                 'expanded'  => true,
                 'multiple'  => false
                 ])
-            ->add('username','text',[
-                'label' =>$trans->trans('label.username'),
-                'attr'  => [
-                    // 'placeholder'   => $trans->trans('label.username'),
-                    'class'         => 'form-control'
-                    ]
-                ])
-            ->add('UserLastname','text',[
-                'label' =>'label.UserLastname',
-                'attr'  => [
-                    // 'placeholder'   => 'label.UserLastname',
-                    'class'         => 'form-control'
-                    ]
-                ])
-            ->add('UserFirstname','text',[
-                'label' =>'label.UserFirstname',
-                'attr'  => [
-                    // 'placeholder'   => 'label.UserFirstname',
-                    'class'         => 'form-control'
-                    ]
-                ])
-
-            ->add('UserAdress','text',[
-                'label' =>'label.UserAdress',
-                'attr'  => [
-                    // 'placeholder'   => 'label.UserAdress',
-                    'class'         => 'form-control'
-                    ]
-                ])
-            ->add('UserSkype','text',[
-                'label'    =>'label.UserSkype',
-                'required' =>false,
-                'attr'     => [
-                    // 'placeholder'   => 'label.UserSkype',
-                    'class'         => 'form-control'
-                    ]
-                ])
-            ->add('UserCP','text',[
-                'label' =>'label.UserCP',
-                'attr'  => [
-                    // 'placeholder'   => 'label.UserCP',
-                    'class'         => 'form-control'
-                    ]
-                ])
-            ->add('UserBusinessName','text',[
+            ->add('UserBusinessName',TextType::class,[
                 'label'    =>'label.UserBusinessName',
                 'required' =>false,
                 'attr'     => [
@@ -83,21 +51,72 @@ class RegistrationFormType extends AbstractType
                     'class'         => 'form-control'
                     ]
                 ])
-            ->add('UserCity','text',[
+            ->add('username',TextType::class,[
+                'label' =>$trans->trans('label.username'),
+                'attr'  => [
+                    'class'         => 'form-control'
+                    ]
+                ])
+            ->add('email',EmailType::class,[
+                'label' =>$trans->trans('label.email'),
+                'attr'  => [
+                    'class'         => 'form-control'
+                    ]
+                ])
+
+                // ]) ->add('plainPassword.second',EmailType::class,[
+                // 'label' =>$trans->trans('label.plainPassword'),
+                // 'attr'  => [
+                //     'class'         => 'form-control'
+                //     ]
+                // ])
+            ->add('UserLastname',TextType::class,[
+                'label' =>'label.UserLastname',
+                'attr'  => [
+                    // 'placeholder'   => 'label.UserLastname',
+                    'class'         => 'form-control'
+                    ]
+                ])
+            ->add('UserFirstname',TextType::class,[
+                'label' =>'label.UserFirstname',
+                'attr'  => [
+                    // 'placeholder'   => 'label.UserFirstname',
+                    'class'         => 'form-control'
+                    ]
+                ])
+
+            ->add('UserAdress',TextType::class,[
+                'label' =>'label.UserAdress',
+                'attr'  => [
+                    // 'placeholder'   => 'label.UserAdress',
+                    'class'         => 'form-control'
+                    ]
+                ])
+            ->add('UserCountry',CountryType::class,[
+                'label' =>'label.UserCountry',
+                'data' =>'FR',
+                "attr"  => [
+                    "class" => "form-control select-2"
+                ]
+            ])
+            ->add('UserCP',TextType::class,[
+                'label' =>'label.UserCP',
+                'attr'  => [
+                    // 'placeholder'   => 'label.UserCP',
+                    'class'         => 'form-control'
+                    ]
+                ])
+
+            ->add('UserCity',TextType::class,[
                 'label'=>'label.UserCity',
                 'attr' => [
                     // 'placeholder'   => 'label.UserCity',
                     'class'         => 'form-control'
                     ]
                 ])
-            ->add('UserCountry','country',[
-                'label' =>'label.UserCountry',
-                "attr"  => [
-                    "class" => "form-control select-2"
-                ]
-            ])
 
-            ->add('UserTel','text',[
+
+            ->add('UserTel',TextType::class,[
                 'label'    =>'label.UserTel',
                 'required' =>false,
                 'attr'     => [
@@ -105,20 +124,41 @@ class RegistrationFormType extends AbstractType
                     'class'         => 'form-control'
                     ]
             ])
+             ->add('UserSkype',TextType::class,[
+                'label'    =>'label.UserSkype',
+                'required' =>false,
+                'attr'     => [
+                    // 'placeholder'   => 'label.UserSkype',
+                    'class'         => 'form-control'
+                    ]
+                ])
+             ->add('Enregistrer', SubmitType::class, array(
+                            'attr' => array(
+                                'class' => 'save btn btn-success',
+                                'type' => 'submit',
+                                'value'=>''
+                            ),
+                        ))
 
         ;
     }
 
 public function getParent()
     {
-        return 'fos_user_registration';
+        return 'FOS\UserBundle\Form\Type\RegistrationFormType';
     }
 
-    /**
-     * @return string
-     */
-    public function getName()
+
+    public function getBlockPrefix()
     {
         return 'rb_user_registration';
     }
+
+    // For Symfony 2.x
+    public function getName()
+    {
+        return $this->getBlockPrefix();
+    }
+
+
 }

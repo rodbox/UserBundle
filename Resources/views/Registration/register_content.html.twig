@@ -1,9 +1,12 @@
-<form action="{{ path('fos_user_registration_register') }}"  method="POST" class="fos_user_registration_register">
+{{form_start(form)}}
+
+{{form_end(form)}}
+
+{# <form action="{{ path('fos_user_registration_register') }}"  method="POST" class="fos_user_registration_register">
 <div class="form-group">{{ form_widget(form.username,{'value':'','attr':{'class':'form-control placeholder-no-fix','placeholder':'label.username' | trans}}) }}</div>
 <div class="form-group">{{ form_widget(form.email,{'value':'','attr':{'class':'form-control placeholder-no-fix','placeholder':'label.email' | trans}}) }}</div>
 <div class="form-group">{{ form_widget(form.plainPassword.first,{'value':'','attr':{'class':'form-control placeholder-no-fix','placeholder':'label.password' | trans}}) }}</div>
 <div class="form-group">{{ form_widget(form.plainPassword.second,{attr:{'class':'form-control','placeholder':'label.verif' | trans}}) }}</div>
-<hr>
-        <input type="submit" class="btn btn-success" value="{{ 'action.create' | trans }}" />
 
 </form>
+ #}
