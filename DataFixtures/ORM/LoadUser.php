@@ -23,13 +23,20 @@ class LoadUser implements FixtureInterface, ContainerAwareInterface
 
   public function load(ObjectManager $em){
 
-    // Get our userManager, you must implement `ContainerAwareInterface`
+        // Get our userManager, you must implement `ContainerAwareInterface`
         $userManager = $this->container->get('fos_user.user_manager');
 
         // Create our user and set details
         $user = $userManager->createUser();
+
         $user->setUsername('rodolphe');
-        $user->setEmail('rodolphe@rodbox.fr');
+        $user->setUserFirstName('Rodolphe');
+        $user->setEmail('jacquemin.rodolphe@hotmail.fr');
+        $user->setUserLastname('Jacquemin');
+        $user->setUserFirstname('Rodolphe');
+        $user->setUserDateCrea(new \DateTime());
+        $user->setUserDateUpd(new \DateTime());
+
         $user->setPlainPassword('aze');
         //$user->setPassword('3NCRYPT3D-V3R51ON');
         $user->setEnabled(true);
