@@ -12,14 +12,9 @@ class DefaultController extends Controller
      */
     public function autoLogin(Request $request, User $user)
     {
-         $firewallName = $this->container->getParameter('fos_user.firewall_name');
-
-        $token = new UsernamePasswordToken($user, $user->getPassword(), $firewallName, $user->getRoles());
-        $this->get('security.context')->setToken($token);
-        $request->getSession()->set('_security_main', serialize($token));
-        $url = $this->generateUrl('fos_user_registration_confirmed');
-        $response = new RedirectResponse($url);
-
-        return $response;
+        $route = 'fos_user_registration_confirmed';
+        /* SERVICE : rb_user.services */
+        return $this->get('rb_user.services')->autologin($user, $route);
+        /* END SERVICE :  rb_user.services */
     }
 }

@@ -6,7 +6,7 @@ services:
 
     rb_user_extension:
         class: RB\UserBundle\Twig\RBUserExtension
-        arguments: ["@service_container","@twig", "@session"]
+        arguments: ["@service_container", "@twig", "@session"]
         tags:
             - { name: twig.extension }
     # rb_user.profile.form.type:
@@ -20,8 +20,6 @@ services:
     #     tags:
     #         - { name: twig.extension }
 
-    # rb_user.registration_complet:
-    #     class: RB\UserBundle\EventListener\RegistrationConfirmedListener
-    #     arguments: [@router,@service_container]
-    #     tags:
-    #         - { name: kernel.event_subscriber }
+    rb_user.services:
+        class: RB\UserBundle\Services\RBUserService
+        arguments: ["@service_container", "@session", "@router"]
