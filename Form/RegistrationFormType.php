@@ -32,8 +32,8 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('UserType', ChoiceType::class, [
                 'choices'   => [
-                    'perso'    => $trans->trans('msg.perso'),
-                    'buisness' => $trans->trans('msg.buisness')
+                    $trans->trans('msg.perso')    => $trans->trans('msg.perso'),
+                    $trans->trans('msg.buisness') => $trans->trans('msg.buisness')
                 ],
                 'label'=> 'label.UserType',
                 'attr' => [
@@ -64,12 +64,6 @@ class RegistrationFormType extends AbstractType
                     ]
                 ])
 
-                // ]) ->add('plainPassword.second',EmailType::class,[
-                // 'label' =>$trans->trans('label.plainPassword'),
-                // 'attr'  => [
-                //     'class'         => 'form-control'
-                //     ]
-                // ])
             ->add('UserLastname',TextType::class,[
                 'label' =>'label.UserLastname',
                 'attr'  => [
@@ -124,14 +118,6 @@ class RegistrationFormType extends AbstractType
                     'class'         => 'form-control'
                     ]
             ])
-             ->add('UserSkype',TextType::class,[
-                'label'    =>'label.UserSkype',
-                'required' =>false,
-                'attr'     => [
-                    // 'placeholder'   => 'label.UserSkype',
-                    'class'         => 'form-control'
-                    ]
-                ])
              ->add('Enregistrer', SubmitType::class, array(
                             'attr' => array(
                                 'class' => 'save btn btn-success',
