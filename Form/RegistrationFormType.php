@@ -35,6 +35,7 @@ class RegistrationFormType extends AbstractType
                     $trans->trans('msg.perso')    => $trans->trans('msg.perso'),
                     $trans->trans('msg.buisness') => $trans->trans('msg.buisness')
                 ],
+                'data'=>$trans->trans('msg.perso'),
                 'label'=> 'label.UserType',
                 'attr' => [
                     // 'placeholder'   => 'label.UserType',

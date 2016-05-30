@@ -4,7 +4,7 @@ namespace RB\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 class DefaultController extends Controller
 {
     /**
@@ -12,9 +12,14 @@ class DefaultController extends Controller
      */
     public function autoLogin(Request $request, User $user)
     {
-        $route = 'fos_user_registration_confirmed';
-        /* SERVICE : rb_user.services */
-        return $this->get('rb_user.services')->autologin($user, $route);
-        /* END SERVICE :  rb_user.services */
+        $firewallName = $this->container->getParameter('fos_user.firewall_name');
+
+        $token = new UsernamePasswordToken($user, $user->getPassword(), $firewallName, $user->getRoles());
+        $this->get('security.token_storage')->setToken($token);
+        $request->getSession()->set('_security_main', serialize($token));
+        $url = $this->generateUrl('fos_user_registration_confirmed');
+        $response = new RedirectResponse($url);
+
+        return $response;
     }
 }
