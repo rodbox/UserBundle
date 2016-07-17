@@ -31,8 +31,8 @@ class RBUserExtension  extends \Twig_Extension{
 
     public function getFunctions(){
         return array(
-            "rb_user_img" => new \Twig_Function_Method($this, 'userImg',            ['is_safe' => ['html']]),
-            "rb_my_img"   => new \Twig_Function_Method($this, 'myImg',            ['is_safe' => ['html']]),
+            new \Twig_SimpleFunction("rb_user_img", [$this, 'userImg'], ['is_safe' => ['html']]),
+            new \Twig_SimpleFunction("rb_my_img", [$this, 'myImg'], ['is_safe' => ['html']]),
         );
     }
 }
