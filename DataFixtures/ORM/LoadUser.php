@@ -28,7 +28,6 @@ class LoadUser implements FixtureInterface, ContainerAwareInterface
 
 
         $mail = $this->container->getParameter('mail_business');
-        
 
         // Create our user and set details
         $user = $userManager->createUser();
