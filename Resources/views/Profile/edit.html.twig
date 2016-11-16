@@ -1,31 +1,26 @@
-{% extends 'RBUserBundle::index.html.twig' %}
+{% extends app.request.isxmlhttprequest ? '::base.html.twig' : 'RBUserBundle::index.html.twig' %}
 
 {% block title %}Mon profile : <span class="small opacity">{{app.user.username}}</span>{% endblock title %}
 {% block subTitle %}{{app.user.username}}{% endblock subTitle %}
 {% block breadcrumb %}<li>Mon profile</li>{% endblock breadcrumb %}
 {% block body %}
-  {{form_start(form)}}
-<div class="container">
-    <!-- BEGIN ROW  -->
-    <div class="row ">
-        <div class="col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3 ">
+  {{form_start(form,{action:path('rb_user_upd',{id:app.user.id}),attr:{class:'form-live form-label-inline'}})}}
 
-    <blockquote class="question">{{"msg.my_profile" | trans}}</blockquote>
+	<div class="pc text-xs-center">
+		<div class="mcb">
+			{{userImg(app.user.id)}}
+		</div>
+		<div class="mct" style="margin-bottom:1rem;">
+			<label>Profile</label><br>
+			{{btn_upload_user(app.user.id,'/log','log.jpg')}}
+		</div>	
+		<div class="mct" style="margin-bottom:1rem;">
+			<label>Background</label><br>
+			{{btn_upload_user(app.user.id,'/bg','bg.jpg')}}
+		</div>	
+		
+	</div>
+	
+  {{form_end(form)}}
 
- <fieldset class="pad-top-content-6">
-<legend>{{"msg.mail_pw" | trans}}</legend><div class="form-group">
-{{ form_row(form.username) }}
-</div><div class="form-group">
-{{ form_row(form.current_password) }}
-</div>
-<div class="form-group">
-{{ form_row(form.email,{attr:{ placeholder:"email",class:"form-control" }}) }}
-</div>
-
-<div class="form-group">
-{# {{ form_row(form.plainPassword.first,{attr:{placeholder:"Mot de passe",class:'form-control marg-bottom-content-1'}}) }}
-{{ form_row(form.plainPassword.second,{attr:{placeholder:"Confirmation",class:'form-control'}}) }} #}
-</div>
-</fieldset>
-          <button>save</button>
 {% endblock body %}

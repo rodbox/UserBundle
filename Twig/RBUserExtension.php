@@ -9,14 +9,23 @@ class RBUserExtension  extends \Twig_Extension{
         $this->container = $container;
         $this->twig      = $twig;
         $this->session   = $session;
+
+        $this->dir = $this->container->getParameter('dir_users');
+        $this->url = $this->container->getParameter('web_users');
     }
 
 
 
     public function userImg($id= '1', $format = 'C')
     {
-        $img  = 'log.jpg';
-        echo $this->twig->render('RBUserBundle:Img:img-'.$format.'.html.twig',['id'=>$id, 'img'=>$img]);
+        $img  = $this->url.'/'.$id.'/log/log.jpg';
+        echo $this->twig->render('RBUserBundle:Img:img.html.twig',['id'=>$id, 'img'=>$img, 'format'=>$format]);
+    }
+
+
+    public function userBG($id= '1', $format = 'C')
+    {
+        echo $this->url.'/'.$id.'/bg/bg.jpg';
     }
 
 
@@ -38,6 +47,7 @@ class RBUserExtension  extends \Twig_Extension{
     public function getFunctions(){
         return array(
             new \Twig_SimpleFunction("userImg", [$this, 'userImg'], ['is_safe' => ['html']]),
+            new \Twig_SimpleFunction("userBg", [$this, 'userBg'], ['is_safe' => ['html']]),
             new \Twig_SimpleFunction("myImg", [$this, 'myImg'], ['is_safe' => ['html']]),
         );
     }

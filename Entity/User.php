@@ -25,442 +25,440 @@ class User extends BaseUser
      */
     protected $id;
 
-
-
-    // * @ORM\Column(type="string", nullable=true) *
-    // protected $UserCiv;
     /** @ORM\Column(type="string", nullable=true) **/
-    protected $UserLastname;
+    protected $lastname;
+    
     /** @ORM\Column(type="string", nullable=true) **/
-    protected $UserFirstname;
+    protected $firstname;
 
     /** @ORM\Column(type="string", nullable=true) **/
-    protected $UserAdress;
+    protected $adress;
 
     /** @ORM\Column(type="string", nullable=true) **/
-    protected $UserCP;
+    protected $cp;
 
     /** @ORM\Column(type="string", nullable=true) **/
-    protected $UserCity;
+    protected $city;
 
     /** @ORM\Column(type="string", nullable=true) **/
-    protected $UserCountry;
+    protected $country;
 
     /** @ORM\Column(type="boolean", nullable=true) **/
-    protected $UserActive;
+    protected $active;
 
     // * @ORM\Column(type="string", nullable=true) *
-    protected $UserType;
+    protected $type;
 
     /** @ORM\Column(type="string", nullable=true) **/
-    protected $UserBusinessName;
-
-
-    /** @ORM\Column(type="datetime", nullable=true) **/
-    protected $UserDateCrea;
+    protected $businessName;
 
     /** @ORM\Column(type="datetime", nullable=true) **/
-    protected $UserDateLastConnect;
+    protected $birthday;
 
     /** @ORM\Column(type="datetime", nullable=true) **/
-    protected $UserDateUpd;
+    protected $dateCrea;
 
-    // * @ORM\Column(type="array") *
-    // protected $UserLang;
+    /** @ORM\Column(type="datetime", nullable=true) **/
+    protected $dateLastConnect;
+
+    /** @ORM\Column(type="datetime", nullable=true) **/
+    protected $dateUpd;
+
+    /** @ORM\Column(type="array") **/
+    protected $lang;
 
     /** @ORM\Column(type="string", nullable=true) **/
-    protected $UserTel;
+    protected $tel;
 
     /** @ORM\Column(type="string", nullable=true) **/
-    protected $UserSkype;
+    protected $img;
 
-
-    // /** @ORM\Column(type="string", nullable=true) **/
-    // protected $UserFacebook;
-
-    // * @ORM\Column(type="string", nullable=true) *
-    // protected $UserPinterest;
-
-    // /** @ORM\Column(type="datetime", nullable=true) **/
-    // protected $UserDateBorn;
+    /** @ORM\Column(type="object", nullable=true) **/
+    protected $meta;
 
 
 
     /**
-     * Get id
+     * Set lastname
      *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set UserCiv
+     * @param string $lastname
      *
-     * @param string $userCiv
      * @return User
      */
-    public function setUserCiv($userCiv)
+    public function setLastname($lastname)
     {
-        $this->UserCiv = $userCiv;
+        $this->lastname = $lastname;
 
         return $this;
     }
 
     /**
-     * Get UserCiv
+     * Get lastname
      *
      * @return string
      */
-    public function getUserCiv()
+    public function getLastname()
     {
-        return $this->UserCiv;
+        return $this->lastname;
     }
 
     /**
-     * Set UserLastname
+     * Set firstname
      *
-     * @param string $userLastname
+     * @param string $firstname
+     *
      * @return User
      */
-    public function setUserLastname($userLastname)
+    public function setFirstname($firstname)
     {
-        $this->UserLastname = $userLastname;
+        $this->firstname = $firstname;
 
         return $this;
     }
 
     /**
-     * Get UserLastname
+     * Get firstname
      *
      * @return string
      */
-    public function getUserLastname()
+    public function getFirstname()
     {
-        return $this->UserLastname;
+        return $this->firstname;
     }
 
     /**
-     * Set UserFirstname
+     * Set adress
      *
-     * @param string $userFirstname
+     * @param string $adress
+     *
      * @return User
      */
-    public function setUserFirstname($userFirstname)
+    public function setAdress($adress)
     {
-        $this->UserFirstname = $userFirstname;
+        $this->adress = $adress;
 
         return $this;
     }
 
     /**
-     * Get UserFirstname
+     * Get adress
      *
      * @return string
      */
-    public function getUserFirstname()
+    public function getAdress()
     {
-        return $this->UserFirstname;
+        return $this->adress;
     }
 
     /**
-     * Set UserAdress
+     * Set cp
      *
-     * @param string $userAdress
+     * @param string $cp
+     *
      * @return User
      */
-    public function setUserAdress($userAdress)
+    public function setCp($cp)
     {
-        $this->UserAdress = $userAdress;
+        $this->cp = $cp;
 
         return $this;
     }
 
     /**
-     * Get UserAdress
+     * Get cp
      *
      * @return string
      */
-    public function getUserAdress()
+    public function getCp()
     {
-        return $this->UserAdress;
+        return $this->cp;
     }
 
     /**
-     * Set UserCP
+     * Set city
      *
-     * @param string $userCP
+     * @param string $city
+     *
      * @return User
      */
-    public function setUserCP($userCP)
+    public function setCity($city)
     {
-        $this->UserCP = $userCP;
+        $this->city = $city;
 
         return $this;
     }
 
     /**
-     * Get UserCP
+     * Get city
      *
      * @return string
      */
-    public function getUserCP()
+    public function getCity()
     {
-        return $this->UserCP;
+        return $this->city;
     }
 
     /**
-     * Set UserCity
+     * Set country
      *
-     * @param string $userCity
+     * @param string $country
+     *
      * @return User
      */
-    public function setUserCity($userCity)
+    public function setCountry($country)
     {
-        $this->UserCity = $userCity;
+        $this->country = $country;
 
         return $this;
     }
 
     /**
-     * Get UserCity
+     * Get country
      *
      * @return string
      */
-    public function getUserCity()
+    public function getCountry()
     {
-        return $this->UserCity;
+        return $this->country;
     }
 
     /**
-     * Set UserCountry
+     * Set active
      *
-     * @param string $userCountry
+     * @param boolean $active
+     *
      * @return User
      */
-    public function setUserCountry($userCountry)
+    public function setActive($active)
     {
-        $this->UserCountry = $userCountry;
+        $this->active = $active;
 
         return $this;
     }
 
     /**
-     * Get UserCountry
-     *
-     * @return string
-     */
-    public function getUserCountry()
-    {
-        return $this->UserCountry;
-    }
-
-    /**
-     * Set UserType
-     *
-     * @param string $userType
-     * @return User
-     */
-    public function setUserType($userType)
-    {
-        $this->UserType = $userType;
-
-        return $this;
-    }
-
-    /**
-     * Get UserType
-     *
-     * @return string
-     */
-    public function getUserType()
-    {
-        return $this->UserType;
-    }
-
-    /**
-     * Set UserDateCrea
-     *
-     * @param \DateTime $userDateCrea
-     * @return User
-     */
-    public function setUserDateCrea($userDateCrea)
-    {
-        $this->UserDateCrea = $userDateCrea;
-
-        return $this;
-    }
-
-    /**
-     * Get UserDateCrea
-     *
-     * @return \DateTime
-     */
-    public function getUserDateCrea()
-    {
-        return $this->UserDateCrea;
-    }
-
-    /**
-     * Set UserDateLastConnect
-     *
-     * @param \DateTime $userDateLastConnect
-     * @return User
-     */
-    public function setUserDateLastConnect($userDateLastConnect)
-    {
-        $this->UserDateLastConnect = $userDateLastConnect;
-
-        return $this;
-    }
-
-    /**
-     * Get UserDateLastConnect
-     *
-     * @return \DateTime
-     */
-    public function getUserDateLastConnect()
-    {
-        return $this->UserDateLastConnect;
-    }
-
-    /**
-     * Set UserDateUpd
-     *
-     * @param \DateTime $userDateUpd
-     * @return User
-     */
-    public function setUserDateUpd($userDateUpd)
-    {
-        $this->UserDateUpd = $userDateUpd;
-
-        return $this;
-    }
-
-    /**
-     * Get UserDateUpd
-     *
-     * @return \DateTime
-     */
-    public function getUserDateUpd()
-    {
-        return $this->UserDateUpd;
-    }
-
-    /**
-     * Set UserLang
-     *
-     * @param array $userLang
-     * @return User
-     */
-    public function setUserLang($userLang)
-    {
-        $this->UserLang = $userLang;
-
-        return $this;
-    }
-
-    /**
-     * Get UserLang
-     *
-     * @return array
-     */
-    public function getUserLang()
-    {
-        return $this->UserLang;
-    }
-
-    /**
-     * Set UserTel
-     *
-     * @param string $userTel
-     * @return User
-     */
-    public function setUserTel($userTel)
-    {
-        $this->UserTel = $userTel;
-
-        return $this;
-    }
-
-    /**
-     * Get UserTel
-     *
-     * @return string
-     */
-    public function getUserTel()
-    {
-        return $this->UserTel;
-    }
-
-    /**
-     * Set UserActive
-     *
-     * @param boolean $userActive
-     * @return User
-     */
-    public function setUserActive($userActive)
-    {
-        $this->UserActive = $userActive;
-
-        return $this;
-    }
-
-    /**
-     * Get UserActive
+     * Get active
      *
      * @return boolean
      */
-    public function getUserActive()
+    public function getActive()
     {
-        return $this->UserActive;
+        return $this->active;
     }
 
     /**
-     * Set UserBusinessName
+     * Set businessName
      *
-     * @param string $userBusinessName
+     * @param string $businessName
+     *
      * @return User
      */
-    public function setUserBusinessName($userBusinessName)
+    public function setBusinessName($businessName)
     {
-        $this->UserBusinessName = $userBusinessName;
+        $this->businessName = $businessName;
 
         return $this;
     }
 
     /**
-     * Get UserBusinessName
+     * Get businessName
      *
      * @return string
      */
-    public function getUserBusinessName()
+    public function getBusinessName()
     {
-        return $this->UserBusinessName;
+        return $this->businessName;
     }
 
     /**
-     * Set UserSkype
+     * Set birthday
      *
-     * @param string $userSkype
+     * @param \DateTime $birthday
+     *
      * @return User
      */
-    public function setUserSkype($userSkype)
+    public function setBirthday($birthday)
     {
-        $this->UserSkype = $userSkype;
+        $this->birthday = $birthday;
 
         return $this;
     }
 
     /**
-     * Get UserSkype
+     * Get birthday
+     *
+     * @return \DateTime
+     */
+    public function getBirthday()
+    {
+        return $this->birthday;
+    }
+
+    /**
+     * Set dateCrea
+     *
+     * @param \DateTime $dateCrea
+     *
+     * @return User
+     */
+    public function setDateCrea($dateCrea)
+    {
+        $this->dateCrea = $dateCrea;
+
+        return $this;
+    }
+
+    /**
+     * Get dateCrea
+     *
+     * @return \DateTime
+     */
+    public function getDateCrea()
+    {
+        return $this->dateCrea;
+    }
+
+    /**
+     * Set dateLastConnect
+     *
+     * @param \DateTime $dateLastConnect
+     *
+     * @return User
+     */
+    public function setDateLastConnect($dateLastConnect)
+    {
+        $this->dateLastConnect = $dateLastConnect;
+
+        return $this;
+    }
+
+    /**
+     * Get dateLastConnect
+     *
+     * @return \DateTime
+     */
+    public function getDateLastConnect()
+    {
+        return $this->dateLastConnect;
+    }
+
+    /**
+     * Set dateUpd
+     *
+     * @param \DateTime $dateUpd
+     *
+     * @return User
+     */
+    public function setDateUpd($dateUpd)
+    {
+        $this->dateUpd = $dateUpd;
+
+        return $this;
+    }
+
+    /**
+     * Get dateUpd
+     *
+     * @return \DateTime
+     */
+    public function getDateUpd()
+    {
+        return $this->dateUpd;
+    }
+
+    /**
+     * Set lang
+     *
+     * @param array $lang
+     *
+     * @return User
+     */
+    public function setLang($lang)
+    {
+        $this->lang = $lang;
+
+        return $this;
+    }
+
+    /**
+     * Get lang
+     *
+     * @return array
+     */
+    public function getLang()
+    {
+        return $this->lang;
+    }
+
+    /**
+     * Set tel
+     *
+     * @param string $tel
+     *
+     * @return User
+     */
+    public function setTel($tel)
+    {
+        $this->tel = $tel;
+
+        return $this;
+    }
+
+    /**
+     * Get tel
      *
      * @return string
      */
-    public function getUserSkype()
+    public function getTel()
     {
-        return $this->UserSkype;
+        return $this->tel;
+    }
+
+    /**
+     * Set img
+     *
+     * @param string $img
+     *
+     * @return User
+     */
+    public function setImg($img)
+    {
+        $this->img = $img;
+
+        return $this;
+    }
+
+    /**
+     * Get img
+     *
+     * @return string
+     */
+    public function getImg()
+    {
+        return $this->img;
+    }
+
+    /**
+     * Set meta
+     *
+     * @param \stdClass $meta
+     *
+     * @return User
+     */
+    public function setMeta($meta)
+    {
+        $this->meta = $meta;
+
+        return $this;
+    }
+
+    /**
+     * Get meta
+     *
+     * @return \stdClass
+     */
+    public function getMeta()
+    {
+        return $this->meta;
     }
 }

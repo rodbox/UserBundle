@@ -2,16 +2,16 @@
 {% set route %}route.{{app.request.get('_route')}}.title{% endset %}
 <html lang="{{app.request.locale}}" {{ context_me_attr() }}>
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-     
-        <link rel="icon" href="{{ asset('/img/fav_rb.png') }}" type="image/png" sizes="16x16" >
-        <link rel="stylesheet" href="{{ asset('assets/combo/admin/css/admin.min.css') }}">
-        <script src="{{ asset('assets/vendor/lodash/lodash.js') }}" ></script>
-        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
-        <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
-        <script src="{{ asset('assets/combo/admin/js/admin.debug.js') }}" ></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+ 
+    <link rel="icon" href="{{ asset('/img/fav_rb.png') }}" type="image/png" sizes="16x16" >
+    <link rel="stylesheet" href="{{ asset('assets/combo/front/css/front.css') }}">
+    <script src="{{ asset('assets/vendor/lodash/lodash.js') }}" ></script>
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+    <script src="{{ asset('assets/combo/admin/js/admin.debug.js') }}" ></script>
 
 <style type="text/css">
     .logo{
@@ -32,35 +32,28 @@
 <meta charset="UTF-8">
     <title>{{title_web}}</title>
 </head>
-<body class="{% block bodyClass %}{% endblock %}">
+<body class="">
     <div id="context-n-default" class="context-n">
-        <div class="{% block containerClass %}{% endblock %}">
-        <div class="container ">
+        <div class="container " class="{% block containerClass %}{% endblock %}">
             <div class="row">
-              
-                    <div id="blog-content">
-                       <div class="text-center" style="padding:3rem 0rem;">
-                            {{ logo('L') }}
-                       </div>
-                    {% block body %}{% endblock %}
-                    </div>
-
-                <div class="col-xs-1">
-                    <div id="sideRight">
-                    {% block sideRight %}
-                    {% endblock %}
-                    </div>
+               <div class="col-xs-12 ">
+                   <div class="text-center" style="padding:3rem 0rem;">
+                        {{ logo('L') }}
+                   </div>
+               </div>
+            </div>
+            <div class="row ">
+                <div class="col-xs-12 col-md-6 offset-md-3 p-c-t-3">
+                   <div id="app-content">
+                        {% block body %}{% endblock %}
+                   </div>
                 </div>
             </div>
         </div>
     </div>
-
-   {# {% include "RBFrontBundle:Navigation:footer.html.twig"  %} #}
-    <div class="flash-container">
-    </div>
+    <div class="flash-container"></div>
 </div>
-    <script src="{{ rb_bower_asset('jquery/dist/jquery.min.js') }}"></script>
-    <script src="{{ rb_bower_asset('bootstrap/dist/js/bootstrap.min.js') }}"></script>
+  
 </script>
 </body>
 </html>

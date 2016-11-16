@@ -25,28 +25,53 @@ class LoadUser implements FixtureInterface, ContainerAwareInterface
 
         // Get our userManager, you must implement `ContainerAwareInterface`
         $userManager = $this->container->get('fos_user.user_manager');
-
-
         $mail = $this->container->getParameter('mail_business');
 
-        // Create our user and set details
-        $user = $userManager->createUser();
 
-        $user->setUsername('user');
-        $user->setUserFirstName('user');
-        $user->setEmail($mail);
-        $user->setUserLastname('Doe');
-        $user->setUserFirstname('John');
-        $user->setUserDateCrea(new \DateTime());
-        $user->setUserDateUpd(new \DateTime());
+        $users = [
+            [
+                'username' => 'user',
+                'email'     => $mail,
+                'firstname' => 'John',
+                'lastname'  => 'Doe',
+                'pw'        => 'aze',
+                'roles'     => ['ROLE_SUPER_ADMIN','ROLE_ADMIN'],
+                'img'       => 'superadmin.png'
+            ],
+            [
+                'username' => 'simpleuser',
+                'email'     => 'simpleuser@rodbox.fr',
+                'firstname' => 'Bilbon',
+                'lastname'  => 'Sacquet',
+                'pw'        => 'aze',
+                'roles'     => ['ROLE_USER'],
+                'img'       => 'user.png'
+            ]
+        ];
 
-        $user->setPlainPassword('aze');
-        //$user->setPassword('3NCRYPT3D-V3R51ON');
-        $user->setEnabled(true);
-        $user->setRoles(array('ROLE_ADMIN','ROLE_SUPER_ADMIN'));
+        foreach ($users as $key => $userData) {
+            extract($userData);
 
-        // Update the user
-        $userManager->updateUser($user, true);
+            // Create our user and set details
+            $user = $userManager->createUser();
+
+            $user->setUsername($username);
+            $user->setFirstName($firstname);
+            $user->setLastname($lastname);
+            $user->setEmail($email);
+            $user->setPlainPassword($pw);
+            $user->setDateCrea(new \DateTime());
+            $user->setDateUpd(new \DateTime());
+
+            //$user->setPassword('3NCRYPT3D-V3R51ON');
+            $user->setEnabled(true);
+            $user->setRoles($roles);
+            $user->setImg($img);
+           
+            // Update the user
+            $userManager->updateUser($user, true);
+        }
+
 
   }
 

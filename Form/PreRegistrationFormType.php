@@ -17,7 +17,7 @@ class PreRegistrationFormType extends AbstractType
     {
         $trans = new translator("fr");
         $builder
-            ->add('UserType', 'choice', array(
+            ->add('type', 'choice', array(
                 'choices'   => array('buyer'=>$trans->trans('msg.iam.buyer'),'seller'=>$trans->trans('msg.iam.seller')),
    
                 'label'=>'label.UserType',
@@ -26,7 +26,7 @@ class PreRegistrationFormType extends AbstractType
                 'expanded'  => true,
                 'multiple'  => false
                 ))
-            ->add('UserLang', 'choice', array(
+            ->add('lang', 'choice', array(
                 'label'=>'label.UserLang',
                 'attr'=>array('placeholder'=>'label.UserLang'),
                 'choices'   => array('EN'=>$trans->trans('msg.EN'),'FR'=>$trans->trans('msg.FR')),

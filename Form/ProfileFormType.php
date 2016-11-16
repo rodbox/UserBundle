@@ -6,6 +6,22 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Translation\Translator;
+
+use FOS\UserBundle\Util\LegacyFormHelper;
+use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
+
+use Symfony\Component\Form\Extension\Core\Type\ButtonType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DatetimeType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\CountryType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 class ProfileFormType extends AbstractType
 {
     /**
@@ -13,30 +29,40 @@ class ProfileFormType extends AbstractType
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
-    { $trans = new translator("fr");
+    {
+        $lang = 'fr';
+        $trans = new translator($lang);
+        $constraintsOptions = array(
+            'message' => 'fos_user.current_password.invalid',
+        );
+
+        if (!empty($options['validation_groups'])) {
+            $constraintsOptions['groups'] = array(reset($options['validation_groups']));
+        }
         $builder
-            ->add('UserType', 'choice', array(
 
-                'choices'   => array('perso'=>$trans->trans('msg.perso'),'buisness'=>$trans->trans('msg.buisness')),
-
-                'label'=>'label.UserType',
-                'attr' => array(
-                    'placeholder'   => 'label.UserType',
-                    'class'             =>' '
-                ),
-                'expanded'  => true,
-                'multiple'  => false
-                ))
-            ->add('username','text',array(
-
+           
+          ->add('current_password', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\PasswordType'), array(
+            'label' => 'form.current_password',
+            'translation_domain' => 'FOSUserBundle',
+            'disabled'=>true,
+            'mapped' => false,
+             'attr' => array(
+                    'placeholder'   => 'form.current_password',
+                    'class'         => 'form-control hide'
+                    ),
+            'constraints' => new UserPassword($constraintsOptions)
+        ))
+            ->add('username',TextType::class,array(
+                'disabled'=>true,
                 // 'data'=>'Jacquemin',
-                'label'=>$trans->trans('label.username'),
+                'label'=>'label.username',
                 'attr' => array(
-                    'placeholder'   => $trans->trans('label.username'),
-                    'class'         => 'form-control'
+                    'placeholder'   => 'label.Username',
+                    'class'         => 'form-control hide'
                     )
                 ))
-            ->add('UserLastname','text',array(
+            ->add('lastname',TextType::class,array(
 
                 // 'data'=>'Jacquemin',
                 'label'=>'label.UserLastname',
@@ -45,7 +71,18 @@ class ProfileFormType extends AbstractType
                     'class'         => 'form-control'
                     )
                 ))
-            ->add('UserFirstname','text',array(
+            ->add('email',TextType::class,array(
+                'disabled'=>true,
+                // 'data'=>'Jacquemin',
+                'label'=>'label.Email',
+                'attr' => array(
+                    'placeholder'   => 'label.Email',
+                    'class'         => 'form-control'
+                    )
+                ))
+
+
+            ->add('firstname',TextType::class,array(
                 // 'data'=>'Rodolphe',
                 'label'=>'label.UserFirstname',
                 'attr' => array(
@@ -54,50 +91,60 @@ class ProfileFormType extends AbstractType
                     )
                 ))
 
-            ->add('UserAdress','text',array(
+            ->add('birthday',BirthdayType::class,array(
+                'required'=>false,
+                // 'data'=>'Jacquemin',
+                'label'=>'label.birthday',
+                 //'widget' => 'single_text',
+                'format' => 'dd-MM-yyyy',
+                //'input'=>'string',
+                'choice_translation_domain'=>$lang,
+                'attr' => array(
+                    'placeholder'   => 'label.birthday',
+                    'class'         => 'form-control'
+                    )
+                ))
+            ->add('adress',TextType::class,array(
                 // 'data'=>'Place de la République',
+                'required'=>false,
                 'label'=>'label.UserAdress',
                 'attr' => array(
                     'placeholder'   => 'label.UserAdress',
                     'class'         => 'form-control'
                     )
                 ))
-            ->add('UserSkype','text',array(
+           
+            ->add('cp',TextType::class,array(
                 // 'data'=>'75010',
-                'label'=>'label.UserSkype',
-                                'required'=>false,
-                'attr' => array(
-                    'placeholder'   => 'label.UserSkype',
-                    'class'         => 'form-control'
-                    )
-                ))
-            ->add('UserCP','text',array(
-                // 'data'=>'75010',
+                'required'=>false,
                 'label'=>'label.UserCP',
                 'attr' => array(
                     'placeholder'   => 'label.UserCP',
                     'class'         => 'form-control'
                     )
                 ))
-            ->add('UserBusinessName','text',array(
+            ->add('businessName',TextType::class,array(
                 // 'data'=>'75010',
+                'required'=>false,
                 'label'=>'label.UserBusinessName',
                 'required'=>false,
                 'attr' => array(
                     'placeholder'   => 'label.UserBusinessName',
-                    'class'         => 'form-control'
+                    'class'         => 'form-control hide'
                     )
                 ))
-            ->add('UserCity','text',array(
+            ->add('city',TextType::class,array(
                 // 'data'=>'Paris',
+                'required'=>false,
                 'label'=>'label.UserCity',
                 'attr' => array(
                     'placeholder'   => 'label.UserCity',
                     'class'         => 'form-control'
                     )
                 ))
-            ->add('UserCountry','country',array(
+            ->add('country',CountryType::class,array(
                 'data'=>'FR',
+                'required'=>false,
                 'label'=>'label.UserCountry',
 
                 "attr" => array(
@@ -106,7 +153,8 @@ class ProfileFormType extends AbstractType
                 )
             ))
 
-            ->add('UserTel','text',array(
+            ->add('tel',TextType::class,array(
+                'required'=>false,
                 'label'=>'label.UserTel',
                 'required'=>false,
                 'attr' => array(
@@ -115,12 +163,20 @@ class ProfileFormType extends AbstractType
                     )
             ))
 
+             ->add('submit', SubmitType::class, array(
+                'label'=>'action.save',
+                'attr' => array(
+                    'class' => 'save btn btn-success btn-block mct',
+                    'type' => 'submit'
+                ),
+            ))
+
         ;
     }
 
 public function getParent()
     {
-        return 'fos_user_profile';
+         return 'FOS\UserBundle\Form\Type\ProfileFormType';
     }
 
     /**
